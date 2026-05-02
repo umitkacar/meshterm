@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" font-family="'SF Mono','JetBrains Mono','Fira Code',monospace">
+  <defs>
+    <linearGradient id="tl-bg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0D1117"/><stop offset="100%" stop-color="#161B22"/></linearGradient>
+  </defs>
+  <rect width="1200" height="380" fill="url(#tl-bg)"/>
+  <text x="600" y="35" fill="#FFFFFF" font-size="20" text-anchor="middle" font-weight="bold">Terminal Emulator History Timeline (1837 — 2026)</text>
+
+  <!-- Main timeline line -->
+  <line x1="60" y1="180" x2="1140" y2="180" stroke="#30363D" stroke-width="3"/>
+
+  <!-- Era backgrounds -->
+  <rect x="60" y="100" width="200" height="160" rx="6" fill="#D2992210" stroke="#D29922" stroke-width="0.5"/>
+  <text x="160" y="118" fill="#D29922" font-size="9" text-anchor="middle">ELECTROMECHANICAL</text>
+  <rect x="270" y="100" width="220" height="160" rx="6" fill="#BC8CFF10" stroke="#BC8CFF" stroke-width="0.5"/>
+  <text x="380" y="118" fill="#BC8CFF" font-size="9" text-anchor="middle">HARDWARE TERMINALS</text>
+  <rect x="500" y="100" width="260" height="160" rx="6" fill="#58A6FF10" stroke="#58A6FF" stroke-width="0.5"/>
+  <text x="630" y="118" fill="#58A6FF" font-size="9" text-anchor="middle">SOFTWARE EMULATORS</text>
+  <rect x="770" y="100" width="370" height="160" rx="6" fill="#3FB95010" stroke="#3FB950" stroke-width="0.5"/>
+  <text x="955" y="118" fill="#3FB950" font-size="9" text-anchor="middle">GPU + AI ERA</text>
+
+  <!-- Event: 1837 Morse -->
+  <circle cx="90" cy="180" r="6" fill="#D29922"/>
+  <line x1="90" y1="174" x2="90" y2="135" stroke="#D29922" stroke-width="1"/>
+  <text x="90" y="132" fill="#D29922" font-size="10" text-anchor="middle" font-weight="bold">1837</text>
+  <text x="90" y="210" fill="#8B949E" font-size="9" text-anchor="middle">Morse</text>
+  <text x="90" y="222" fill="#8B949E" font-size="9" text-anchor="middle">Telegraph</text>
+
+  <!-- Event: 1963 Model 33 -->
+  <circle cx="180" cy="180" r="6" fill="#D29922"/>
+  <line x1="180" y1="186" x2="180" y2="228" stroke="#D29922" stroke-width="1"/>
+  <text x="180" y="242" fill="#D29922" font-size="10" text-anchor="middle" font-weight="bold">1963</text>
+  <text x="180" y="138" fill="#E6EDF3" font-size="9" text-anchor="middle">Model 33</text>
+  <text x="180" y="150" fill="#8B949E" font-size="9" text-anchor="middle">ASR TTY</text>
+
+  <!-- Event: 1969 Unix -->
+  <circle cx="240" cy="180" r="5" fill="#D29922"/>
+  <text x="240" y="210" fill="#8B949E" font-size="8" text-anchor="middle">1969</text>
+  <text x="240" y="222" fill="#8B949E" font-size="8" text-anchor="middle">Unix</text>
+
+  <!-- Event: 1974 VT52 -->
+  <circle cx="310" cy="180" r="6" fill="#BC8CFF"/>
+  <line x1="310" y1="174" x2="310" y2="135" stroke="#BC8CFF" stroke-width="1"/>
+  <text x="310" y="132" fill="#BC8CFF" font-size="10" text-anchor="middle" font-weight="bold">1974</text>
+  <text x="310" y="210" fill="#E6EDF3" font-size="9" text-anchor="middle">VT52</text>
+  <text x="310" y="222" fill="#8B949E" font-size="9" text-anchor="middle">ESC codes</text>
+
+  <!-- Event: 1978 VT100 -->
+  <circle cx="400" cy="180" r="8" fill="#BC8CFF" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="400" y1="186" x2="400" y2="228" stroke="#BC8CFF" stroke-width="1.5"/>
+  <text x="400" y="242" fill="#BC8CFF" font-size="11" text-anchor="middle" font-weight="bold">1978</text>
+  <text x="400" y="138" fill="#FFFFFF" font-size="11" text-anchor="middle" font-weight="bold">VT100</text>
+  <text x="400" y="152" fill="#8B949E" font-size="9" text-anchor="middle">ANSI standard</text>
+
+  <!-- Event: 1983 VT220 -->
+  <circle cx="460" cy="180" r="5" fill="#BC8CFF"/>
+  <text x="460" y="210" fill="#8B949E" font-size="8" text-anchor="middle">1983 VT220</text>
+
+  <!-- Event: 1984 xterm -->
+  <circle cx="540" cy="180" r="7" fill="#58A6FF"/>
+  <line x1="540" y1="174" x2="540" y2="135" stroke="#58A6FF" stroke-width="1"/>
+  <text x="540" y="132" fill="#58A6FF" font-size="10" text-anchor="middle" font-weight="bold">1984</text>
+  <text x="540" y="210" fill="#E6EDF3" font-size="9" text-anchor="middle">xterm</text>
+  <text x="540" y="222" fill="#8B949E" font-size="9" text-anchor="middle">First SW emu</text>
+
+  <!-- Event: 1996 PuTTY -->
+  <circle cx="620" cy="180" r="5" fill="#58A6FF"/>
+  <line x1="620" y1="186" x2="620" y2="228" stroke="#58A6FF" stroke-width="1"/>
+  <text x="620" y="242" fill="#58A6FF" font-size="9" text-anchor="middle">1999 PuTTY</text>
+
+  <!-- Event: 2002 GNOME Terminal -->
+  <circle cx="680" cy="180" r="5" fill="#58A6FF"/>
+  <text x="680" y="138" fill="#8B949E" font-size="8" text-anchor="middle">2002</text>
+  <text x="680" y="150" fill="#8B949E" font-size="8" text-anchor="middle">GNOME Term</text>
+
+  <!-- Event: 2010 iTerm2 -->
+  <circle cx="730" cy="180" r="5" fill="#58A6FF"/>
+  <text x="730" y="210" fill="#8B949E" font-size="8" text-anchor="middle">2010 iTerm2</text>
+
+  <!-- Event: 2016 Alacritty -->
+  <circle cx="810" cy="180" r="7" fill="#3FB950"/>
+  <line x1="810" y1="174" x2="810" y2="135" stroke="#3FB950" stroke-width="1"/>
+  <text x="810" y="132" fill="#3FB950" font-size="10" text-anchor="middle" font-weight="bold">2016</text>
+  <text x="810" y="210" fill="#E6EDF3" font-size="9" text-anchor="middle">Alacritty</text>
+  <text x="810" y="222" fill="#8B949E" font-size="9" text-anchor="middle">GPU era begins</text>
+
+  <!-- Event: 2018 Kitty -->
+  <circle cx="870" cy="180" r="5" fill="#3FB950"/>
+  <text x="870" y="242" fill="#8B949E" font-size="8" text-anchor="middle">2018 Kitty</text>
+
+  <!-- Event: 2019 Windows Terminal -->
+  <circle cx="920" cy="180" r="7" fill="#3FB950"/>
+  <line x1="920" y1="174" x2="920" y2="135" stroke="#3FB950" stroke-width="1"/>
+  <text x="920" y="132" fill="#3FB950" font-size="10" text-anchor="middle" font-weight="bold">2019</text>
+  <text x="920" y="210" fill="#E6EDF3" font-size="9" text-anchor="middle">Win Terminal</text>
+  <text x="920" y="222" fill="#8B949E" font-size="9" text-anchor="middle">102K stars</text>
+
+  <!-- Event: 2023 Warp -->
+  <circle cx="980" cy="180" r="5" fill="#3FB950"/>
+  <text x="980" y="242" fill="#8B949E" font-size="8" text-anchor="middle">2023 Warp AI</text>
+
+  <!-- Event: 2024 Ghostty -->
+  <circle cx="1050" cy="180" r="8" fill="#3FB950" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="1050" y1="174" x2="1050" y2="135" stroke="#3FB950" stroke-width="1.5"/>
+  <text x="1050" y="132" fill="#3FB950" font-size="11" text-anchor="middle" font-weight="bold">2024</text>
+  <text x="1050" y="210" fill="#FFFFFF" font-size="10" text-anchor="middle" font-weight="bold">Ghostty</text>
+  <text x="1050" y="224" fill="#8B949E" font-size="9" text-anchor="middle">Zig, 48K stars</text>
+
+  <!-- Event: 2023 Rio -->
+  <circle cx="1110" cy="180" r="5" fill="#3FB950"/>
+  <text x="1110" y="242" fill="#8B949E" font-size="8" text-anchor="middle">2023 Rio</text>
+  <text x="1110" y="254" fill="#8B949E" font-size="8" text-anchor="middle">WebGPU</text>
+
+  <!-- Speed annotation -->
+  <text x="600" y="300" fill="#8B949E" font-size="10" text-anchor="middle">&#x2500;&#x2500;&#x2500; 110 baud (10 char/s) &#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; 407 FPS (billions of pixels/s) &#x2500;&#x2500;&#x2500;</text>
+
+  <text x="600" y="365" fill="#8B949E" font-size="10" text-anchor="middle">Building Terminal Emulators: From Teletype to GPU (2026)</text>
+</svg>

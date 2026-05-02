@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="'SF Mono','JetBrains Mono','Fira Code',monospace">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#58A6FF"/></marker>
+    <marker id="arrow-up" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#3FB950"/></marker>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0D1117"/><stop offset="100%" stop-color="#161B22"/></linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg-grad)"/>
+  <text x="600" y="40" fill="#FFFFFF" font-size="22" text-anchor="middle" font-weight="bold">Terminal Emulator Architecture — The 5 Building Blocks</text>
+  <text x="600" y="62" fill="#8B949E" font-size="13" text-anchor="middle">From keyboard input to pixels on screen</text>
+
+  <!-- Layer 1: User Input -->
+  <rect x="350" y="80" width="500" height="70" rx="12" fill="#161B22" stroke="#D29922" stroke-width="2"/>
+  <text x="430" y="108" fill="#D29922" font-size="11" font-weight="bold">LAYER 1</text>
+  <text x="600" y="108" fill="#E6EDF3" font-size="16" text-anchor="middle" font-weight="bold">User Input</text>
+  <text x="600" y="132" fill="#8B949E" font-size="12" text-anchor="middle">Keyboard events, mouse clicks, paste, resize</text>
+  <text x="380" y="132" fill="#D29922" font-size="18">&#x2328;</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="600" y1="150" x2="600" y2="175" stroke="#58A6FF" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Layer 2: Input Handler -->
+  <rect x="350" y="180" width="500" height="70" rx="12" fill="#161B22" stroke="#F778BA" stroke-width="2"/>
+  <text x="430" y="208" fill="#F778BA" font-size="11" font-weight="bold">LAYER 2</text>
+  <text x="600" y="208" fill="#E6EDF3" font-size="16" text-anchor="middle" font-weight="bold">Input Handler</text>
+  <text x="600" y="232" fill="#8B949E" font-size="12" text-anchor="middle">Key→escape sequence, Ctrl+C→SIGINT, mouse reporting, bracket paste</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="600" y1="250" x2="600" y2="275" stroke="#58A6FF" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Layer 3: PTY (Kernel) -->
+  <rect x="200" y="280" width="800" height="100" rx="12" fill="#1a1530" stroke="#BC8CFF" stroke-width="2.5" stroke-dasharray="8,4"/>
+  <text x="240" y="308" fill="#BC8CFF" font-size="11" font-weight="bold">LAYER 3 — KERNEL BOUNDARY</text>
+  <text x="600" y="308" fill="#E6EDF3" font-size="16" text-anchor="middle" font-weight="bold">PTY (Pseudo Terminal)</text>
+  <!-- Master -->
+  <rect x="240" y="320" width="200" height="45" rx="8" fill="#21262D" stroke="#BC8CFF" stroke-width="1.5"/>
+  <text x="340" y="340" fill="#BC8CFF" font-size="13" text-anchor="middle" font-weight="bold">PTY Master (fd)</text>
+  <text x="340" y="356" fill="#8B949E" font-size="10" text-anchor="middle">Terminal emulator side</text>
+  <!-- Kernel -->
+  <rect x="490" y="320" width="220" height="45" rx="8" fill="#21262D" stroke="#BC8CFF" stroke-width="1.5"/>
+  <text x="600" y="340" fill="#BC8CFF" font-size="13" text-anchor="middle" font-weight="bold">Line Discipline</text>
+  <text x="600" y="356" fill="#8B949E" font-size="10" text-anchor="middle">Echo, signals, buffering</text>
+  <!-- Slave -->
+  <rect x="760" y="320" width="200" height="45" rx="8" fill="#21262D" stroke="#3FB950" stroke-width="1.5"/>
+  <text x="860" y="340" fill="#3FB950" font-size="13" text-anchor="middle" font-weight="bold">PTY Slave (/dev/pts)</text>
+  <text x="860" y="356" fill="#8B949E" font-size="10" text-anchor="middle">Shell side (bash/zsh)</text>
+  <!-- PTY arrows -->
+  <line x1="440" y1="342" x2="490" y2="342" stroke="#BC8CFF" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="710" y1="342" x2="760" y2="342" stroke="#3FB950" stroke-width="1.5" marker-end="url(#arrow-up)"/>
+
+  <!-- Arrow 3→4 -->
+  <line x1="600" y1="380" x2="600" y2="410" stroke="#58A6FF" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="620" y="400" fill="#8B949E" font-size="10">read(master_fd)</text>
+
+  <!-- Layer 4: Terminal Emulator Core (3 sub-components) -->
+  <rect x="100" y="415" width="1000" height="140" rx="12" fill="#161B22" stroke="#58A6FF" stroke-width="2.5"/>
+  <text x="140" y="443" fill="#58A6FF" font-size="11" font-weight="bold">LAYER 4 — TERMINAL EMULATOR CORE</text>
+  <!-- Sub 1: VT100 Parser -->
+  <rect x="130" y="455" width="280" height="80" rx="8" fill="#21262D" stroke="#58A6FF" stroke-width="1.5"/>
+  <text x="270" y="480" fill="#58A6FF" font-size="14" text-anchor="middle" font-weight="bold">VT100 Parser</text>
+  <text x="270" y="498" fill="#8B949E" font-size="11" text-anchor="middle">ESC [ 31m → fg=red</text>
+  <text x="270" y="514" fill="#8B949E" font-size="11" text-anchor="middle">State machine (ECMA-48)</text>
+  <!-- Sub 2: Grid Buffer -->
+  <rect x="450" y="455" width="280" height="80" rx="8" fill="#21262D" stroke="#58A6FF" stroke-width="1.5"/>
+  <text x="590" y="480" fill="#58A6FF" font-size="14" text-anchor="middle" font-weight="bold">Grid Buffer</text>
+  <text x="590" y="498" fill="#8B949E" font-size="11" text-anchor="middle">rows x cols character cells</text>
+  <text x="590" y="514" fill="#8B949E" font-size="11" text-anchor="middle">Scrollback + alt screen</text>
+  <!-- Sub 3: Renderer -->
+  <rect x="780" y="455" width="280" height="80" rx="8" fill="#21262D" stroke="#39D2C0" stroke-width="1.5"/>
+  <text x="920" y="480" fill="#39D2C0" font-size="14" text-anchor="middle" font-weight="bold">Renderer</text>
+  <text x="920" y="498" fill="#8B949E" font-size="11" text-anchor="middle">Font atlas + glyph cache</text>
+  <text x="920" y="514" fill="#8B949E" font-size="11" text-anchor="middle">GPU shaders / CPU paint</text>
+  <!-- Sub arrows -->
+  <line x1="410" y1="495" x2="450" y2="495" stroke="#58A6FF" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="730" y1="495" x2="780" y2="495" stroke="#39D2C0" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Arrow 4→5 -->
+  <line x1="600" y1="555" x2="600" y2="585" stroke="#39D2C0" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Layer 5: Display -->
+  <rect x="300" y="590" width="600" height="70" rx="12" fill="#161B22" stroke="#39D2C0" stroke-width="2"/>
+  <text x="380" y="618" fill="#39D2C0" font-size="11" font-weight="bold">LAYER 5</text>
+  <text x="600" y="618" fill="#E6EDF3" font-size="16" text-anchor="middle" font-weight="bold">Display / GPU Output</text>
+  <text x="600" y="642" fill="#8B949E" font-size="12" text-anchor="middle">Metal (macOS) | OpenGL (Linux) | DirectX (Win) | UIKit (iOS)</text>
+
+  <!-- Side labels -->
+  <text x="50" y="350" fill="#BC8CFF" font-size="12" transform="rotate(-90 50 350)" text-anchor="middle">KERNEL SPACE</text>
+  <text x="50" y="200" fill="#58A6FF" font-size="12" transform="rotate(-90 50 200)" text-anchor="middle">USER SPACE</text>
+  <text x="50" y="510" fill="#39D2C0" font-size="12" transform="rotate(-90 50 510)" text-anchor="middle">USER SPACE</text>
+
+  <!-- Legend -->
+  <rect x="880" y="80" width="280" height="100" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+  <text x="900" y="100" fill="#8B949E" font-size="11" font-weight="bold">LEGEND</text>
+  <line x1="900" y1="115" x2="930" y2="115" stroke="#D29922" stroke-width="2"/><text x="940" y="119" fill="#8B949E" font-size="10">User / Input</text>
+  <line x1="900" y1="133" x2="930" y2="133" stroke="#BC8CFF" stroke-width="2"/><text x="940" y="137" fill="#8B949E" font-size="10">Kernel (PTY)</text>
+  <line x1="900" y1="151" x2="930" y2="151" stroke="#58A6FF" stroke-width="2"/><text x="940" y="155" fill="#8B949E" font-size="10">Emulator Core</text>
+  <line x1="900" y1="169" x2="930" y2="169" stroke="#39D2C0" stroke-width="2"/><text x="940" y="173" fill="#8B949E" font-size="10">GPU / Display</text>
+
+  <text x="600" y="690" fill="#8B949E" font-size="10" text-anchor="middle">Building Terminal Emulators: From Teletype to GPU (2026)</text>
+</svg>

@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" font-family="'SF Mono','JetBrains Mono','Fira Code',monospace">
+  <rect width="1000" height="700" fill="#0D1117"/>
+  <text x="500" y="35" fill="#FFFFFF" font-size="20" text-anchor="middle" font-weight="bold">Cross-Platform Abstraction — 4 Platforms, 3 Layers</text>
+  <text x="500" y="55" fill="#8B949E" font-size="12" text-anchor="middle">What changes per platform and what stays the same</text>
+
+  <!-- Column headers -->
+  <rect x="180" y="70" width="160" height="35" rx="6" fill="#21262D" stroke="#58A6FF" stroke-width="2"/>
+  <text x="260" y="93" fill="#58A6FF" font-size="14" text-anchor="middle" font-weight="bold">macOS</text>
+  <rect x="370" y="70" width="160" height="35" rx="6" fill="#21262D" stroke="#3FB950" stroke-width="2"/>
+  <text x="450" y="93" fill="#3FB950" font-size="14" text-anchor="middle" font-weight="bold">Linux</text>
+  <rect x="560" y="70" width="160" height="35" rx="6" fill="#21262D" stroke="#D29922" stroke-width="2"/>
+  <text x="640" y="93" fill="#D29922" font-size="14" text-anchor="middle" font-weight="bold">Windows</text>
+  <rect x="750" y="70" width="160" height="35" rx="6" fill="#21262D" stroke="#F85149" stroke-width="2"/>
+  <text x="830" y="93" fill="#F85149" font-size="14" text-anchor="middle" font-weight="bold">iOS</text>
+
+  <!-- Row labels -->
+  <text x="90" y="158" fill="#BC8CFF" font-size="13" text-anchor="middle" font-weight="bold">PTY / Shell</text>
+  <text x="90" y="175" fill="#8B949E" font-size="10" text-anchor="middle">Layer</text>
+
+  <text x="90" y="310" fill="#39D2C0" font-size="13" text-anchor="middle" font-weight="bold">GPU / Render</text>
+  <text x="90" y="327" fill="#8B949E" font-size="10" text-anchor="middle">Layer</text>
+
+  <text x="90" y="462" fill="#F778BA" font-size="13" text-anchor="middle" font-weight="bold">UI / Window</text>
+  <text x="90" y="479" fill="#8B949E" font-size="10" text-anchor="middle">Layer</text>
+
+  <!-- Row 1: PTY Layer -->
+  <rect x="170" y="120" width="180" height="100" rx="8" fill="#161B22" stroke="#58A6FF" stroke-width="1.5"/>
+  <text x="260" y="145" fill="#58A6FF" font-size="12" text-anchor="middle" font-weight="bold">openpty()</text>
+  <text x="260" y="162" fill="#8B949E" font-size="10" text-anchor="middle">forkpty() (BSD)</text>
+  <text x="260" y="179" fill="#8B949E" font-size="10" text-anchor="middle">posix_openpt()</text>
+  <text x="260" y="196" fill="#8B949E" font-size="9" text-anchor="middle">/dev/ptmx (shared w/Linux)</text>
+  <text x="260" y="210" fill="#3FB950" font-size="9" text-anchor="middle">POSIX</text>
+
+  <rect x="360" y="120" width="180" height="100" rx="8" fill="#161B22" stroke="#3FB950" stroke-width="1.5"/>
+  <text x="450" y="145" fill="#3FB950" font-size="12" text-anchor="middle" font-weight="bold">openpty()</text>
+  <text x="450" y="162" fill="#8B949E" font-size="10" text-anchor="middle">/dev/ptmx + /dev/pts/*</text>
+  <text x="450" y="179" fill="#8B949E" font-size="10" text-anchor="middle">UNIX 98 PTY</text>
+  <text x="450" y="196" fill="#8B949E" font-size="9" text-anchor="middle">devpts filesystem</text>
+  <text x="450" y="210" fill="#3FB950" font-size="9" text-anchor="middle">POSIX</text>
+
+  <rect x="550" y="120" width="180" height="100" rx="8" fill="#161B22" stroke="#D29922" stroke-width="1.5"/>
+  <text x="640" y="145" fill="#D29922" font-size="11" text-anchor="middle" font-weight="bold">CreatePseudoConsole</text>
+  <text x="640" y="162" fill="#8B949E" font-size="10" text-anchor="middle">ConPTY (Win10 1809+)</text>
+  <text x="640" y="179" fill="#8B949E" font-size="10" text-anchor="middle">hInput/hOutput pipes</text>
+  <text x="640" y="196" fill="#8B949E" font-size="9" text-anchor="middle">Legacy: WinPTY</text>
+  <text x="640" y="210" fill="#D29922" font-size="9" text-anchor="middle">Win32 API</text>
+
+  <rect x="740" y="120" width="180" height="100" rx="8" fill="#161B22" stroke="#F85149" stroke-width="1.5"/>
+  <text x="830" y="145" fill="#F85149" font-size="12" text-anchor="middle" font-weight="bold">NO PTY</text>
+  <text x="830" y="162" fill="#8B949E" font-size="10" text-anchor="middle">SSH (Blink, Termius)</text>
+  <text x="830" y="179" fill="#8B949E" font-size="10" text-anchor="middle">x86 emul (iSH)</text>
+  <text x="830" y="196" fill="#8B949E" font-size="9" text-anchor="middle">WASM (a-Shell)</text>
+  <text x="830" y="210" fill="#F85149" font-size="9" text-anchor="middle">Sandboxed</text>
+
+  <!-- Row 2: GPU Layer -->
+  <rect x="170" y="270" width="180" height="100" rx="8" fill="#161B22" stroke="#58A6FF" stroke-width="1.5"/>
+  <text x="260" y="295" fill="#39D2C0" font-size="12" text-anchor="middle" font-weight="bold">Metal</text>
+  <text x="260" y="312" fill="#8B949E" font-size="10" text-anchor="middle">OpenGL (deprecated)</text>
+  <text x="260" y="329" fill="#8B949E" font-size="10" text-anchor="middle">CoreText (fonts)</text>
+  <text x="260" y="346" fill="#8B949E" font-size="9" text-anchor="middle">wgpu maps to Metal</text>
+  <text x="260" y="360" fill="#39D2C0" font-size="9" text-anchor="middle">Best: Metal native</text>
+
+  <rect x="360" y="270" width="180" height="100" rx="8" fill="#161B22" stroke="#3FB950" stroke-width="1.5"/>
+  <text x="450" y="295" fill="#39D2C0" font-size="12" text-anchor="middle" font-weight="bold">OpenGL / Vulkan</text>
+  <text x="450" y="312" fill="#8B949E" font-size="10" text-anchor="middle">EGL (X11 + Wayland)</text>
+  <text x="450" y="329" fill="#8B949E" font-size="10" text-anchor="middle">FreeType + HarfBuzz</text>
+  <text x="450" y="346" fill="#8B949E" font-size="9" text-anchor="middle">fontconfig discovery</text>
+  <text x="450" y="360" fill="#39D2C0" font-size="9" text-anchor="middle">Best: Vulkan</text>
+
+  <rect x="550" y="270" width="180" height="100" rx="8" fill="#161B22" stroke="#D29922" stroke-width="1.5"/>
+  <text x="640" y="295" fill="#39D2C0" font-size="12" text-anchor="middle" font-weight="bold">DirectX 12 / Vulkan</text>
+  <text x="640" y="312" fill="#8B949E" font-size="10" text-anchor="middle">DXGI swap chain</text>
+  <text x="640" y="329" fill="#8B949E" font-size="10" text-anchor="middle">DirectWrite (fonts)</text>
+  <text x="640" y="346" fill="#8B949E" font-size="9" text-anchor="middle">wgpu maps to DX12</text>
+  <text x="640" y="360" fill="#39D2C0" font-size="9" text-anchor="middle">Best: DX12</text>
+
+  <rect x="740" y="270" width="180" height="100" rx="8" fill="#161B22" stroke="#F85149" stroke-width="1.5"/>
+  <text x="830" y="295" fill="#39D2C0" font-size="12" text-anchor="middle" font-weight="bold">Metal (GPU)</text>
+  <text x="830" y="312" fill="#8B949E" font-size="10" text-anchor="middle">UIKit rendering</text>
+  <text x="830" y="329" fill="#8B949E" font-size="10" text-anchor="middle">CoreText (fonts)</text>
+  <text x="830" y="346" fill="#8B949E" font-size="9" text-anchor="middle">Limited GPU access</text>
+  <text x="830" y="360" fill="#F85149" font-size="9" text-anchor="middle">Thermal throttling</text>
+
+  <!-- Row 3: UI Layer -->
+  <rect x="170" y="420" width="180" height="100" rx="8" fill="#161B22" stroke="#58A6FF" stroke-width="1.5"/>
+  <text x="260" y="445" fill="#F778BA" font-size="12" text-anchor="middle" font-weight="bold">AppKit (Cocoa)</text>
+  <text x="260" y="462" fill="#8B949E" font-size="10" text-anchor="middle">NSWindow, NSView</text>
+  <text x="260" y="479" fill="#8B949E" font-size="10" text-anchor="middle">SwiftUI possible</text>
+  <text x="260" y="496" fill="#8B949E" font-size="9" text-anchor="middle">Liquid Glass (Tahoe)</text>
+  <text x="260" y="510" fill="#F778BA" font-size="9" text-anchor="middle">Native feel: Best</text>
+
+  <rect x="360" y="420" width="180" height="100" rx="8" fill="#161B22" stroke="#3FB950" stroke-width="1.5"/>
+  <text x="450" y="445" fill="#F778BA" font-size="12" text-anchor="middle" font-weight="bold">GTK4 / X11 / Wayland</text>
+  <text x="450" y="462" fill="#8B949E" font-size="10" text-anchor="middle">GtkWindow (GTK)</text>
+  <text x="450" y="479" fill="#8B949E" font-size="10" text-anchor="middle">wl_surface (Wayland)</text>
+  <text x="450" y="496" fill="#8B949E" font-size="9" text-anchor="middle">X11 legacy support</text>
+  <text x="450" y="510" fill="#F778BA" font-size="9" text-anchor="middle">Two display servers!</text>
+
+  <rect x="550" y="420" width="180" height="100" rx="8" fill="#161B22" stroke="#D29922" stroke-width="1.5"/>
+  <text x="640" y="445" fill="#F778BA" font-size="12" text-anchor="middle" font-weight="bold">Win32 / XAML</text>
+  <text x="640" y="462" fill="#8B949E" font-size="10" text-anchor="middle">HWND + WndProc</text>
+  <text x="640" y="479" fill="#8B949E" font-size="10" text-anchor="middle">WinUI 3 / XAML</text>
+  <text x="640" y="496" fill="#8B949E" font-size="9" text-anchor="middle">UWP sandbox option</text>
+  <text x="640" y="510" fill="#F778BA" font-size="9" text-anchor="middle">XAML = modern</text>
+
+  <rect x="740" y="420" width="180" height="100" rx="8" fill="#161B22" stroke="#F85149" stroke-width="1.5"/>
+  <text x="830" y="445" fill="#F778BA" font-size="12" text-anchor="middle" font-weight="bold">UIKit / SwiftUI</text>
+  <text x="830" y="462" fill="#8B949E" font-size="10" text-anchor="middle">UIViewController</text>
+  <text x="830" y="479" fill="#8B949E" font-size="10" text-anchor="middle">UITextView (input)</text>
+  <text x="830" y="496" fill="#8B949E" font-size="9" text-anchor="middle">No direct PTY</text>
+  <text x="830" y="510" fill="#F85149" font-size="9" text-anchor="middle">Most constrained</text>
+
+  <!-- Shared Core annotation -->
+  <rect x="200" y="560" width="600" height="55" rx="10" fill="#161B22" stroke="#39D2C0" stroke-width="2.5"/>
+  <text x="500" y="582" fill="#39D2C0" font-size="14" text-anchor="middle" font-weight="bold">Shared Core (Platform-Independent)</text>
+  <text x="500" y="602" fill="#8B949E" font-size="11" text-anchor="middle">VT100 Parser | Grid Buffer | Unicode Handling | Config | Color Scheme</text>
+
+  <!-- Rust crate annotations -->
+  <text x="90" y="585" fill="#D29922" font-size="10" text-anchor="middle" font-weight="bold">Rust Crates:</text>
+  <text x="90" y="600" fill="#8B949E" font-size="9" text-anchor="middle">portable-pty</text>
+  <text x="90" y="613" fill="#8B949E" font-size="9" text-anchor="middle">wgpu + winit</text>
+
+  <text x="500" y="640" fill="#39D2C0" font-size="10" text-anchor="middle">wgpu abstracts Metal/Vulkan/DX12/OpenGL | portable-pty abstracts PTY APIs</text>
+
+  <text x="500" y="690" fill="#8B949E" font-size="10" text-anchor="middle">Building Terminal Emulators: From Teletype to GPU (2026)</text>
+</svg>

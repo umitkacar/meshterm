@@ -1,0 +1,129 @@
+{
+  "name": "iTerm2 Scripting Knowledge Graph",
+  "version": "1.0.0",
+  "generated": "2026-01-01",
+  "project": "project-20-iTerm2",
+
+  "nodes": {
+    "approaches": [
+      {
+        "id": "python_api",
+        "name": "Python API",
+        "status": "recommended",
+        "modules": 26,
+        "features": ["async", "events", "status_bar", "error_handling"]
+      },
+      {
+        "id": "applescript",
+        "name": "AppleScript",
+        "status": "deprecated",
+        "issues": ["tab_title_trap", "apostrophe", "limited_features"]
+      },
+      {
+        "id": "jxa",
+        "name": "JavaScript for Automation",
+        "status": "alternative",
+        "notes": "Apple's JS alternative to AppleScript"
+      },
+      {
+        "id": "osascript",
+        "name": "osascript CLI",
+        "status": "workaround",
+        "issues": ["quote_hell", "slow"]
+      }
+    ],
+
+    "objects": [
+      {
+        "id": "app",
+        "name": "Application",
+        "parent": null
+      },
+      {
+        "id": "window",
+        "name": "Window",
+        "parent": "app"
+      },
+      {
+        "id": "tab",
+        "name": "Tab",
+        "parent": "window"
+      },
+      {
+        "id": "session",
+        "name": "Session",
+        "parent": "tab",
+        "notes": "Primary control point - NOT tab"
+      }
+    ],
+
+    "features": [
+      {
+        "id": "split_panes",
+        "name": "Split Panes",
+        "api": ["python", "applescript"]
+      },
+      {
+        "id": "shell_integration",
+        "name": "Shell Integration",
+        "api": ["python"]
+      },
+      {
+        "id": "triggers",
+        "name": "Triggers",
+        "api": ["python"]
+      },
+      {
+        "id": "profiles",
+        "name": "Profiles",
+        "api": ["python", "applescript"]
+      },
+      {
+        "id": "tmux",
+        "name": "tmux Integration",
+        "api": ["python"]
+      }
+    ],
+
+    "issues": [
+      {
+        "id": "tab_title_trap",
+        "name": "Tab Title Trap",
+        "error": -10000,
+        "cause": "Tab objects don't have settable title",
+        "solution": "Use session.name instead"
+      },
+      {
+        "id": "apostrophe",
+        "name": "Apostrophe Catastrophe",
+        "error": -2740,
+        "cause": "Missing 's in AppleScript's",
+        "solution": "Add apostrophe"
+      },
+      {
+        "id": "quote_hell",
+        "name": "Quote Hell",
+        "error": "various",
+        "cause": "Nested quotes in bash+applescript",
+        "solution": "Use heredoc, temp file, or Python API"
+      }
+    ]
+  },
+
+  "relationships": [
+    {"from": "python_api", "to": "app", "type": "controls"},
+    {"from": "applescript", "to": "app", "type": "controls"},
+    {"from": "app", "to": "window", "type": "contains"},
+    {"from": "window", "to": "tab", "type": "contains"},
+    {"from": "tab", "to": "session", "type": "contains"},
+    {"from": "applescript", "to": "tab_title_trap", "type": "causes"},
+    {"from": "python_api", "to": "tab_title_trap", "type": "avoids"}
+  ],
+
+  "recommendations": {
+    "new_projects": "python_api",
+    "legacy_code": "evaluate_migration",
+    "quick_commands": "osascript_heredoc",
+    "complex_automation": "python_api"
+  }
+}

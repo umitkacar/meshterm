@@ -1,0 +1,44 @@
+# meshterm — per-user local configuration template
+#
+# Copy this file to ~/.config/meshterm/local.toml and chmod 600.
+# This file holds machine-local overrides; commit-safe values only.
+#
+# Layer priority (highest first):
+#   1. Explicit kwargs in code
+#   2. Environment vars (MESHTERM_*  / nested via __)
+#   3. THIS file               (~/.config/meshterm/local.toml)
+#   4. Workspace TOML          ($MESHTERM_WORKSPACE_CONFIG)
+#   5. Built-in defaults
+
+# ── Backend selection ─────────────────────────────────────────────
+# Which tmux backend to use. "libtmux" is the default and recommended.
+[backend]
+# kind = "libtmux"           # one of: libtmux | custom
+
+# ── Paste-buffer behaviour ────────────────────────────────────────
+# Tunables for tmux send-keys + paste-buffer broadcast pattern.
+[paste_buffer]
+# enter_delay_seconds = 0.2   # delay between paste-buffer and Enter
+
+# ── Idle detection ────────────────────────────────────────────────
+[idle]
+# poll_interval_seconds = 1.0
+# min_stable_polls = 3
+# log_path = "~/.cache/meshterm/idle.log"
+
+# ── Security ──────────────────────────────────────────────────────
+[security]
+# strict_host_keys = true     # SSH host-key verification (do NOT disable in prod)
+# known_hosts_file = "~/.ssh/known_hosts"
+
+# ── Network (overrides for remote tmux control) ───────────────────
+# Empty by default; populate per host you connect to.
+[network]
+# default_ssh_port = 22
+# default_connect_timeout_seconds = 10.0
+
+# Per-host overrides example (uncomment + adapt):
+# [network.hosts.<your-host>]
+# host = "<your-host>.local"
+# username = "<your-user>"
+# key_filename = "~/.ssh/id_ed25519"

@@ -1,0 +1,20 @@
+[package]
+name = "terminal-skeleton"
+version = "0.1.0"
+edition = "2021"
+description = "Cross-platform terminal emulator skeleton using portable-pty + vte"
+license = "MIT"
+
+[dependencies]
+# PTY abstraction — works on Linux, macOS, Windows (ConPTY)
+portable-pty = "0.9"
+
+# VT100/xterm escape code parser (used by Alacritty)
+vte = "0.13"
+
+# Logging
+log = "0.4"
+env_logger = "0.11"
+
+# Cross-platform terminal I/O (for raw mode in this demo)
+crossterm = "0.28"

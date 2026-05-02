@@ -1,0 +1,30 @@
+# venv
+.venv*/
+__pycache__/
+*.pyc
+*.pyo
+
+# build artifacts
+dist/
+build/
+*.egg-info/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+._*
+
+# private config (NEVER commit)
+~/.config/claude-mesh/local.toml
+local.toml
+*.local.toml
+mesh.toml
+!mesh.toml.example
+
+# pytest
+.pytest_cache/
+.mypy_cache/
+.hypothesis/
+htmlcov/
+.coverage

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" font-family="'SF Mono','JetBrains Mono','Fira Code',monospace">
+  <defs>
+    <marker id="pf-right" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#58A6FF"/></marker>
+    <marker id="pf-left" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto"><polygon points="8 0, 0 3, 8 6" fill="#3FB950"/></marker>
+    <marker id="pf-down" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#BC8CFF"/></marker>
+  </defs>
+  <rect width="1000" height="500" fill="#0D1117"/>
+  <text x="500" y="35" fill="#FFFFFF" font-size="20" text-anchor="middle" font-weight="bold">PTY Communication Flow — fork() + read/write</text>
+
+  <!-- Process: Terminal Emulator -->
+  <rect x="50" y="80" width="350" height="350" rx="12" fill="#161B22" stroke="#58A6FF" stroke-width="2"/>
+  <text x="225" y="110" fill="#58A6FF" font-size="16" text-anchor="middle" font-weight="bold">Terminal Emulator Process</text>
+  <text x="225" y="128" fill="#8B949E" font-size="11" text-anchor="middle">(Parent — PID: 1234)</text>
+
+  <!-- Master FD box -->
+  <rect x="100" y="150" width="250" height="60" rx="8" fill="#21262D" stroke="#58A6FF" stroke-width="1.5"/>
+  <text x="225" y="175" fill="#58A6FF" font-size="14" text-anchor="middle" font-weight="bold">master_fd = 5</text>
+  <text x="225" y="195" fill="#8B949E" font-size="10" text-anchor="middle">PTY Master (read/write)</text>
+
+  <!-- Terminal actions -->
+  <rect x="80" y="230" width="130" height="40" rx="6" fill="#21262D" stroke="#D29922" stroke-width="1"/>
+  <text x="145" y="255" fill="#D29922" font-size="11" text-anchor="middle">write(master, "ls\n")</text>
+
+  <rect x="80" y="285" width="130" height="40" rx="6" fill="#21262D" stroke="#3FB950" stroke-width="1"/>
+  <text x="145" y="310" fill="#3FB950" font-size="11" text-anchor="middle">read(master, buf)</text>
+
+  <rect x="240" y="230" width="130" height="40" rx="6" fill="#21262D" stroke="#39D2C0" stroke-width="1"/>
+  <text x="305" y="255" fill="#39D2C0" font-size="11" text-anchor="middle">VT100 Parse</text>
+
+  <rect x="240" y="285" width="130" height="40" rx="6" fill="#21262D" stroke="#39D2C0" stroke-width="1"/>
+  <text x="305" y="310" fill="#39D2C0" font-size="11" text-anchor="middle">GPU Render</text>
+
+  <!-- Keyboard/Screen labels -->
+  <rect x="100" y="350" width="100" height="35" rx="6" fill="#21262D" stroke="#D29922" stroke-width="1"/>
+  <text x="150" y="372" fill="#D29922" font-size="11" text-anchor="middle">Keyboard</text>
+  <rect x="250" y="350" width="100" height="35" rx="6" fill="#21262D" stroke="#39D2C0" stroke-width="1"/>
+  <text x="300" y="372" fill="#39D2C0" font-size="11" text-anchor="middle">Screen</text>
+
+  <!-- Process: Shell -->
+  <rect x="600" y="80" width="350" height="350" rx="12" fill="#161B22" stroke="#3FB950" stroke-width="2"/>
+  <text x="775" y="110" fill="#3FB950" font-size="16" text-anchor="middle" font-weight="bold">Shell Process (bash/zsh)</text>
+  <text x="775" y="128" fill="#8B949E" font-size="11" text-anchor="middle">(Child — PID: 1235)</text>
+
+  <!-- Slave FD box -->
+  <rect x="650" y="150" width="250" height="60" rx="8" fill="#21262D" stroke="#3FB950" stroke-width="1.5"/>
+  <text x="775" y="175" fill="#3FB950" font-size="14" text-anchor="middle" font-weight="bold">slave_fd → stdin/out/err</text>
+  <text x="775" y="195" fill="#8B949E" font-size="10" text-anchor="middle">PTY Slave (/dev/pts/3)</text>
+
+  <!-- Shell actions -->
+  <rect x="650" y="230" width="130" height="40" rx="6" fill="#21262D" stroke="#3FB950" stroke-width="1"/>
+  <text x="715" y="255" fill="#3FB950" font-size="11" text-anchor="middle">read(0, buf)</text>
+
+  <rect x="650" y="285" width="130" height="40" rx="6" fill="#21262D" stroke="#3FB950" stroke-width="1"/>
+  <text x="715" y="310" fill="#3FB950" font-size="11" text-anchor="middle">write(1, output)</text>
+
+  <rect x="810" y="230" width="130" height="40" rx="6" fill="#21262D" stroke="#3FB950" stroke-width="1"/>
+  <text x="875" y="255" fill="#3FB950" font-size="11" text-anchor="middle">exec("ls")</text>
+
+  <rect x="810" y="285" width="130" height="40" rx="6" fill="#21262D" stroke="#3FB950" stroke-width="1"/>
+  <text x="875" y="310" fill="#3FB950" font-size="11" text-anchor="middle">ESC sequences</text>
+
+  <!-- Kernel PTY bridge -->
+  <rect x="420" y="140" width="160" height="170" rx="12" fill="#1a1530" stroke="#BC8CFF" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="500" y="165" fill="#BC8CFF" font-size="12" text-anchor="middle" font-weight="bold">KERNEL</text>
+  <text x="500" y="185" fill="#BC8CFF" font-size="11" text-anchor="middle">PTY Driver</text>
+  <rect x="445" y="200" width="110" height="35" rx="6" fill="#21262D" stroke="#BC8CFF" stroke-width="1"/>
+  <text x="500" y="222" fill="#BC8CFF" font-size="10" text-anchor="middle">Line Discipline</text>
+  <rect x="445" y="250" width="110" height="35" rx="6" fill="#21262D" stroke="#BC8CFF" stroke-width="1"/>
+  <text x="500" y="272" fill="#BC8CFF" font-size="10" text-anchor="middle">Echo / Signals</text>
+
+  <!-- Data flow arrows -->
+  <!-- Input: Terminal → Kernel → Shell -->
+  <line x1="350" y1="175" x2="420" y2="215" stroke="#D29922" stroke-width="2" marker-end="url(#pf-right)"/>
+  <line x1="580" y1="215" x2="650" y2="175" stroke="#D29922" stroke-width="2" marker-end="url(#pf-right)"/>
+  <text x="500" y="145" fill="#D29922" font-size="10" text-anchor="middle">User input →</text>
+
+  <!-- Output: Shell → Kernel → Terminal -->
+  <line x1="650" y1="195" x2="580" y2="265" stroke="#3FB950" stroke-width="2" marker-end="url(#pf-left)"/>
+  <line x1="420" y1="265" x2="350" y2="195" stroke="#3FB950" stroke-width="2" marker-end="url(#pf-left)"/>
+  <text x="500" y="305" fill="#3FB950" font-size="10" text-anchor="middle">← Shell output</text>
+
+  <!-- fork() annotation -->
+  <rect x="415" y="370" width="170" height="50" rx="8" fill="#21262D" stroke="#F778BA" stroke-width="1.5"/>
+  <text x="500" y="392" fill="#F778BA" font-size="12" text-anchor="middle" font-weight="bold">fork() + exec()</text>
+  <text x="500" y="408" fill="#8B949E" font-size="10" text-anchor="middle">Child gets slave fd</text>
+
+  <!-- Connection lines from fork -->
+  <line x1="415" y1="395" x2="225" y2="395" stroke="#F778BA" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="585" y1="395" x2="775" y2="395" stroke="#F778BA" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Platform note -->
+  <rect x="350" y="440" width="300" height="40" rx="6" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+  <text x="500" y="458" fill="#8B949E" font-size="10" text-anchor="middle">Linux: openpty() | macOS: forkpty()</text>
+  <text x="500" y="472" fill="#8B949E" font-size="10" text-anchor="middle">Windows: CreatePseudoConsole (ConPTY)</text>
+
+  <text x="500" y="495" fill="#8B949E" font-size="10" text-anchor="middle">Building Terminal Emulators: From Teletype to GPU (2026)</text>
+</svg>

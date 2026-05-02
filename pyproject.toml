@@ -1,0 +1,90 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "meshterm"
+version = "0.2.11"
+description = "Linux terminal server with iTerm2-compatible Python API — custom PTY + pyte VT parser + Unix socket IPC"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [
+    {name = "Dr. Umit Kacar", email = "kacarumit.phd@gmail.com"},
+]
+keywords = ["terminal", "tmux", "iterm2", "api", "meshterm", "claude-mesh"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Terminals",
+    "Topic :: System :: Shells",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = [
+    "pyte>=0.8.0",
+    "pydantic-settings>=2.0.0",
+]
+
+[project.optional-dependencies]
+cli = ["click>=8.0", "rich>=13.0"]
+backend-tmux = ["libtmux>=0.37,<1.0"]
+test = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=4.1",
+    "pytest-mock>=3.12",
+    "hypothesis>=6.0",
+    "paramiko>=3.4.0",
+]
+dev = [
+    "meshterm[cli,test,backend-tmux]",
+    "ruff>=0.4.0",
+    "mypy>=1.10",
+]
+
+[project.scripts]
+meshterm = "meshterm.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/umitkacar/meshterm"
+Repository = "https://github.com/umitkacar/meshterm"
+Issues = "https://github.com/umitkacar/meshterm/issues"
+Documentation = "https://github.com/umitkacar/meshterm/tree/main/docs"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/meshterm"]
+
+[tool.hatch.build.targets.sdist]
+# Privacy: exclude internal docs that may leak operator-specific info.
+# Files marked here are also deleted from the working tree; the patterns
+# remain as a belt-and-suspenders gate against accidental re-introduction.
+exclude = [
+    ".venv*/",
+    "dist/",
+    ".pytest_cache/",
+    ".mypy_cache/",
+    ".hypothesis/",
+    "__pycache__/",
+    ".DS_Store",
+    "._*",
+    "ROADMAP.md",
+    "DECISION.md",
+    "docs/MESHTERM-APOSTROPHE-SAFETY.md",
+    "docs/MESHTERM-COORDINATOR-BROADCAST-PATTERN.md",
+    "docs/PARALLEL-AUDIT-PATTERN.md",
+    "docs/VSCODE-REMOTE-SSH-LAUNCHERS.md",
+    "docs/iterm2-docs/iterm2-remote-session-discovery-bypass.md",
+    "docs/reference/MEETING-NOTES.md",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
